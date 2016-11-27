@@ -6,6 +6,8 @@ export class Unit {
     dependents: Unit [] = []
     // tier: Tier
     versions: Version [] = []
+    url: string
+    path: string
 
     constructor(name: string) {
         this.name = name

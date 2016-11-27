@@ -23,13 +23,17 @@ export function load_unit(source: Unit_Source, collection: Collection): Unit {
     return unit
 }
 
-export function load_project(filename, collection: Collection) {
+export function load_project(filename: string, collection: Collection) {
     const json = fs.readFileSync(filename, 'ascii')
     let project = JSON.parse(json)
     let dependencies = project.dependencies
     for (let name in dependencies) {
         let version = create_version_range(dependencies [name])
         collection.reference_dependency(name)
+    }
+
+    return {
+        path: project.path
     }
 }
 
